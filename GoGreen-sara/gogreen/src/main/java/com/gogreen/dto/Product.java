@@ -50,10 +50,9 @@ public class Product implements Serializable{
 		return price;
 	}
 
-	public void setPrice(Float price2) {
-		this.price = price2;
+	public void setPrice(Float price) {
+		this.price = price;
 	}
-
 
 
 	public String getDescription() {

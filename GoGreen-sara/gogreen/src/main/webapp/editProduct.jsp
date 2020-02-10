@@ -15,7 +15,7 @@
         <!--Cabecero-->
         <%@ include file="/common/header.jsp" %> 
 
-        <form name="frm-client" action="${pageContext.request.contextPath}/product" method="POST" class="was-validated">
+        <form name="frmProduct" action="${pageContext.request.contextPath}/product" method="POST" class="was-validated">
            <input id="input-action" type="hidden" name="action" value="update" />
            <input type="hidden" name="idClient" value="${product.code}" />
            
