@@ -1,0 +1,48 @@
+.form-signin{	
+	width: 90%;
+	max-width: 350px;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+.form-control{
+	margin: 5px;
+}
+
+.btn-add{
+	display: flex;
+    width: 60%;
+    border: none;
+    margin: 5px;
+    flex-direction: column;
+    background-color: green;
+}
+
+.guest:hover{
+	color: green;
+}
+
+.guest{
+	color: #8C8C8C;
+}
+
+.logo:hover{
+	transform: rotate(180deg);
+}
+
+.logo{
+	transition: all .5s;
+    width: 90%;
+    max-width: 150px;
+    margin: 10px;
+
+}
+
+
+.title{
+	color: blue;
+}
