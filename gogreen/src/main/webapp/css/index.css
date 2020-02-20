@@ -46,3 +46,94 @@
 .title{
 	color: blue;
 }
+
+#pie-pagina {
+	background-color: #40BE46;
+	position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.buttons {
+	padding: 6px;
+	width: 90%;
+	max-width: 230px;
+	margin: 2px auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: #40BE46;
+	background-color:  #40BE46;
+}
+
+.buttons:hover {
+	opacity: 0.5;
+}
+
+.inner-button {
+	background-color: transparent;
+	border: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.link {
+	color: white;
+}
+
+.fondo {
+	background: url("https://www.fiware.org/wp-content/uploads/2018/09/shutterstock_280510247-min.jpg") no-repeat;
+	color: #93C274;
+	background-position: center;
+    background-size: cover;
+}
+
+.jumbotron {
+	margin: 0px;
+	min-height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lead {
+	margin: 0;
+}
+
+#front-office-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50vh;
+}
+
+.form-tickets {
+	width: 90%;
+	max-width: 600px;
+	height: 350px;
+	
+}
+
+.form-tickets-content {
+	width: 100%;
+}
+
+.button-add-ticket {
+	color: white;
+	border: none;
+	border-radius: 5px;
+	background-color: #17a2b8;
+	padding: 10px 30px;
+	width: 100%;
+}
+.button-add-ticket:hover {
+	opacity: 0.5;
+}
+
+.btn{
+	color: white;
+}

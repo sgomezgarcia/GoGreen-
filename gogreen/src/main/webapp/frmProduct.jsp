@@ -11,7 +11,8 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/f90d3bf50d.js" crossorigin="anonymous"></script>
-
+		<link rel="stylesheet" type="text/css" href="./css/index.css">
+		
         <title>Control de Productos</title>
         <style>
         	.fondo{
@@ -36,23 +37,23 @@
         <section id="actions" class="py-4 mb-4 bg-light">
 		    <div class="container">
 		        <div class="row">
-		            <div class="col-md-3">
-		                <a href="#" class="buttons">
+		            <div class="buttons">
+		                <a href="${pageContext.request.contextPath}/client?action=insert" class="btn">
 		                    <i class="fas fa-plus-circle"></i> Agregar Producto
 		                </a>
 		            </div>
-		            <div class="col-md-3">
-		                <a href="${pageContext.request.contextPath}/product?action=list" class="buttons">
+		            <div class="buttons">
+		                <a href="${pageContext.request.contextPath}/product?action=list" class="btn">
 		                    <i class="fas fa-eye"></i> Ver Productos
 		                </a>
 		            </div>
-		            <div class="col-md-3">
-		                <a href="${pageContext.request.contextPath}/addClient.jsp" class="buttons">
+		            <div class="buttons">
+		                <a href="${pageContext.request.contextPath}/addClient.jsp" class="btn">
 		                    <i class="fas fa-plus"></i> Add client
 		                </a>
 		            </div>
-		            <div class="col-md-3">
-		                <a href="${pageContext.request.contextPath}/client?action=list" class="buttons">
+		            <div class="buttons">
+		                <a href="${pageContext.request.contextPath}/client?action=list" class="btn">
 		                    <i class="fas fa-eye"></i> Display clients
 		                </a>
 		            </div>
