@@ -14,17 +14,7 @@
 		<link rel="stylesheet" type="text/css" href="./css/index.css">
 		
         <title>Control de Productos</title>
-        <style>
-        	.fondo{
-        		background-image: url("img/backheader.jpg") ;
-        		color:#93C274;
-        	}
-        	.jumbotron{
-        		padding-top:5px;
-        		padding-bottom:5px;
-        		margin:0px;
-        	}
-        </style>
+     
         <link rel="icon" href="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/shopping-circle-green-512.png">
     </head>
     <body>
@@ -38,7 +28,7 @@
 		    <div class="container">
 		        <div class="row">
 		            <div class="buttons">
-		                <a href="${pageContext.request.contextPath}/client?action=insert" class="btn">
+		                <a href="${pageContext.request.contextPath}/product?action=insert" class="btn">
 		                    <i class="fas fa-plus-circle"></i> Agregar Producto
 		                </a>
 		            </div>

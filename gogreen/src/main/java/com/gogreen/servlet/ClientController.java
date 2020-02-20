@@ -12,8 +12,8 @@ import javax.servlet.http.*;
 import java.sql.Connection;
 
 
-import com.gogreen.dto.Client;
 import com.gogreen.dao.ClientDao;
+import com.gogreen.dto.Client;
 import com.gogreen.dao.DBConnection;
 
 @WebServlet("/client")
@@ -72,10 +72,8 @@ private static final long serialVersionUID = -7558166539389234332L;
 		String password = null;
 		name = request.getParameter("name");
 		password = request.getParameter("password");
-		
-		//hash password
-        String securePass = SHA256.sha256(password);
 
+        String securePass = SHA256.sha256(password);
 		try {
 			
 			 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -93,14 +91,11 @@ private static final long serialVersionUID = -7558166539389234332L;
 	        	Client client = new Client();
 
 	        	String name2 = rs.getString("cli_name");
-				String surname = rs.getString("cli_surname");
 				String password2 = rs.getString("cli_password");
-				double balance = rs.getDouble("cli_balance");
+				
               
 				client.setName(name2);
-				client.setSurname(surname);
 				client.setPassword(password2);
-				client.setBalance(balance);
 
 
                 HttpSession sessio = request.getSession(true);
@@ -136,7 +131,7 @@ private static final long serialVersionUID = -7558166539389234332L;
 		HttpSession session = request.getSession();
 		session.setAttribute("clientes", clientes);
 		session.setAttribute("totalClientes", clientes.size());
-		session.setAttribute("saldoTotal", this.calcularSaldoTotal(clientes));
+		session.setAttribute("balanceTotal", this.calcularbalanceTotal(clientes));
 
 		// request.getRequestDispatcher("frmClient.jsp").forward(request, response);
 		response.sendRedirect("frmClient.jsp");
@@ -144,9 +139,9 @@ private static final long serialVersionUID = -7558166539389234332L;
 
 	private void editClient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// recuperamos el idCliente
-		int idCliente = Integer.parseInt(request.getParameter("idClient"));
-		Client cliente = new ClientDao().findById(new Client(idCliente));
-		request.setAttribute("cliente", cliente);
+		int id = Integer.parseInt(request.getParameter("id"));
+		Client client = new ClientDao().findById(new Client(id));
+		request.setAttribute("cliente", client);
 		String jspEditar = "/editClient.jsp";
 		request.getRequestDispatcher(jspEditar).forward(request, response);
 
@@ -156,17 +151,17 @@ private static final long serialVersionUID = -7558166539389234332L;
 		//request.setCharacterEncoding("UTF-8");
 		
 		// recuperamos los valores del formulario agregarCliente
-		int idCliente = Integer.parseInt(request.getParameter("idClient"));
-		String nombre = request.getParameter("nombre");
-		String apellido = request.getParameter("apellido");
-		double saldo = 0;
-		String saldoString = request.getParameter("saldo");
-		if (saldoString != null && !"".equals(saldoString)) {
-			saldo = Double.parseDouble(saldoString);
+		String name = request.getParameter("name");
+		String surname = request.getParameter("surname");
+		String password = request.getParameter("password");
+		double balance = 0;
+		String balanceString = request.getParameter("balance");
+		if (balanceString != null && !"".equals(balanceString)) {
+			balance = Double.parseDouble(balanceString);
 		}
 
 		// Creamos el objeto de cliente (modelo)
-		Client client = new Client(idCliente, nombre, apellido, saldoString, saldo);
+		Client client = new Client(name, surname, password, balanceString, balance);
 
 		// Insertamos el nuevo objeto en la base de datos
 		int registrosModificados = new ClientDao().create(client);
@@ -181,21 +176,21 @@ private static final long serialVersionUID = -7558166539389234332L;
 		System.out.println("Modifigogreen client");
 		
 		// Recuperam els valors del formulari editClient
-		int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-		String nombre = request.getParameter("nombre");
-		System.out.println("Nombre:" + nombre);
-		String apellido = request.getParameter("apellido");
-		double saldo = 0;
-		String saldoString = request.getParameter("saldo");
-		if (saldoString != null && !"".equals(saldoString)) {
-			saldo = Double.parseDouble(saldoString);
+		int id = Integer.parseInt(request.getParameter("id"));
+		String name = request.getParameter("name");
+		System.out.println("Nombre:" + name);
+		String surname = request.getParameter("surname");
+		double balance = 0;
+		String balanceString = request.getParameter("balance");
+		if (balanceString != null && !"".equals(balanceString)) {
+			balance = Double.parseDouble(balanceString);
 		}
 
 		// Creamos el objeto de cliente (modelo)
-		Client cliente = new Client(idCliente, nombre, apellido, saldoString, saldo);
+		Client client = new Client(id, name, surname, balanceString, balance);
 
 		// Modifigogreen el objeto en la base de datos
-		int registrosModificados = new ClientDao().update(cliente);
+		int registrosModificados = new ClientDao().update(client);
 		System.out.println("Registres modificats:" + registrosModificados);
 
 		// Redirigimos hacia accion por default
@@ -204,25 +199,25 @@ private static final long serialVersionUID = -7558166539389234332L;
 
 	private void deleteClient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// recuperamos los valores del formulario editarCliente
-		int idCliente = Integer.parseInt(request.getParameter("idClient"));
+		int id = Integer.parseInt(request.getParameter("id"));
 
 		// Creamos el objeto de cliente (modelo)
-		Client cliente = new Client(idCliente);
+		Client client = new Client(id);
 
 		// Eliminamos el objeto en la base de datos
-		int registrosModificados = new ClientDao().delete(cliente);
+		int registrosModificados = new ClientDao().delete(client);
 		System.out.println("Registres modificats:" + registrosModificados);
 
 		// Redirigimos hacia accion por default
 		this.showListClient(request, response);
 	}
 	
-	private double calcularSaldoTotal(List<Client> clientes) {
-		double saldoTotal = 0;
-		for (Client cliente : clientes) {
-			saldoTotal += cliente.getBalance();
+	private double calcularbalanceTotal(List<Client> clientes) {
+		double balanceTotal = 0;
+		for (Client client : clientes) {
+			balanceTotal += client.getBalance();
 		}
-		return saldoTotal;
+		return balanceTotal;
 	}
 
 }

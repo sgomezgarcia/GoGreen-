@@ -21,7 +21,7 @@
 
 <body>
 	<form class="form-signin" method="POST"
-		action="${pageContext.request.contextPath}/product?action=login">
+		action="${pageContext.request.contextPath}/client?action=login">
 		<img class="logo"
 			src="https://image.winudf.com/v2/image/Y29tLnNocmVlLmhlYWx0aHlmb29kX2ljb25fMTUzODM5ODk4OF8wOTg/icon.png?w=170&fakeurl=1">
 		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>

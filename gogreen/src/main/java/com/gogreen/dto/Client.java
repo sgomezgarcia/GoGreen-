@@ -9,9 +9,11 @@ public class Client implements Serializable{
     private String password;
     private double balance;
 
-    public Client() {
-    }
 
+    public Client() {
+    	
+    }
+    
 	public Client(int id) {
 		this.id = id;
 	}

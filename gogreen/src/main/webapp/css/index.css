@@ -44,7 +44,9 @@
 
 
 .title{
-	color: blue;
+	color: white;
+	font-weight: bold;
+	font-size: 30px;
 }
 
 #pie-pagina {
@@ -86,7 +88,7 @@
 }
 
 .fondo {
-	background: url("https://www.fiware.org/wp-content/uploads/2018/09/shutterstock_280510247-min.jpg") no-repeat;
+	background: url("https://data.whicdn.com/images/303107522/original.png") no-repeat;
 	color: #93C274;
 	background-position: center;
     background-size: cover;
@@ -94,7 +96,8 @@
 
 .jumbotron {
 	margin: 0px;
-	min-height: 30vh;
+	min-height: 20vh;
+	height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -120,6 +123,7 @@
 
 .form-tickets-content {
 	width: 100%;
+	
 }
 
 .button-add-ticket {
@@ -136,4 +140,9 @@
 
 .btn{
 	color: white;
+}
+
+.row{
+	display: flex;
+    flex-wrap: inherit;
 }

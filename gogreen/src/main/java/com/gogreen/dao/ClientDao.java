@@ -12,11 +12,11 @@ public class ClientDao {
 	 * 
 	 */
 	public List<Client> listar() {
-		String SQL_SELECT = "SELECT cli_id, cli_name, cli_surname, cli_password, cli_balance " + " FROM Client";
+		String SQL_SELECT = "SELECT cli_id, cli_name, cli_surname, cli_password, cli_balance " + " FROM client";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		Client Client = null;
+		Client Client;
 		List<Client> Clients = new ArrayList<>();
 
 		try {
@@ -47,9 +47,9 @@ public class ClientDao {
 	 * Recupera un Client a la base de dades segons el seu ID
 	 * 
 	 */
-	public Client findById(Client Client) {
+	public Client findById(Client client) {
 		String SQL_SELECT_BY_ID = "SELECT cli_id, cli_name, cli_surname, cli_balance "
-				+ " FROM Client WHERE cli_id = ?";
+				+ " FROM client WHERE cli_id = ?";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -57,7 +57,7 @@ public class ClientDao {
 			conn = DBConnection.getConnection();
 			stmt = conn.prepareStatement(SQL_SELECT_BY_ID);
 
-			stmt.setInt(1, Client.getId());
+			stmt.setInt(1, client.getId());
 			rs = stmt.executeQuery();
 			rs.absolute(1);// nos posicionamos en el primer registro devuelto
 
@@ -65,9 +65,9 @@ public class ClientDao {
 			String surname = rs.getString("cli_surname");
 			double balance = rs.getDouble("cli_balance");
 
-			Client.setName(name);
-			Client.setSurname(surname);
-			Client.setBalance(balance);
+			client.setName(name);
+			client.setSurname(surname);
+			client.setBalance(balance);
 
 		} catch (SQLException ex) {
 			ex.printStackTrace(System.out);
@@ -76,27 +76,28 @@ public class ClientDao {
 			DBConnection.close(stmt);
 			DBConnection.close(conn);
 		}
-		return Client;
+		return client;
 	}
 
 	/*
 	 * Crea un Client a la base de dades
 	 * 
 	 */
-	public int create(Client Client) {
-		String SQL_INSERT = "INSERT INTO Client(cli_name, cli_surname, cli_password, cli_balance) "
-				+ " VALUES(?, ?, ?, ?, ?, ?)";
+	public int create(Client client) {
+		String SQL_INSERT = "INSERT INTO client(cli_name, cli_surname, cli_password, cli_balance) "
+				+ " VALUES(?, ?, SHA2(?,256), ?)";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		int rows = 0;
 		try {
 			conn = DBConnection.getConnection();
 			stmt = conn.prepareStatement(SQL_INSERT);
-			stmt.setString(1, Client.getName());
-			stmt.setString(2, Client.getSurname());
-			stmt.setString(3, Client.getPassword());
-			stmt.setDouble(4, Client.getBalance());
-			System.out.println(Client.toString());
+            int i = 1;
+			stmt.setString(i++, client.getName());
+			stmt.setString(i++, client.getSurname());
+			stmt.setString(i++, client.getPassword());
+			stmt.setDouble(i++, client.getBalance());
+			System.out.println(client.toString());
 			rows = stmt.executeUpdate();
 		} catch (SQLException ex) {
 			ex.printStackTrace(System.out);
@@ -112,7 +113,7 @@ public class ClientDao {
 	 * 
 	 */
 	public int update(Client Client) {
-		String SQL_UPDATE = "UPDATE Client "
+		String SQL_UPDATE = "UPDATE client "
 				+ " SET cli_name=?, cli_surname=?, cli_matr=?, cli_balance=? WHERE cli_id=?";
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -141,7 +142,7 @@ public class ClientDao {
 	 * 
 	 */
 	public int delete(Client Client) {
-		String SQL_DELETE = "DELETE FROM Client WHERE cli_id = ?";
+		String SQL_DELETE = "DELETE FROM client WHERE cli_id = ?";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		int rows = 0;

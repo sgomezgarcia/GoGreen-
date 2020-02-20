@@ -16,20 +16,8 @@
 	crossorigin="anonymous">
 <script src="https://kit.fontawesome.com/f90d3bf50d.js"
 	crossorigin="anonymous"></script>
-
-<title>Control de Clientes</title>
-<style>
-.fondo {
-	background: url("img/header.jpg") no-repeat;
-	color: #93C274;
-}
-
-.jumbotron {
-	padding-top: 5px;
-	padding-bottom: 5px;
-	margin: 0px;
-}
-</style>
+		<link rel="stylesheet" type="text/css" href="./css/index.css">
+	
 </head>
 <body>
 	<!--Header-->
@@ -41,27 +29,33 @@
 	<section id="actions" class="py-4 mb-4 bg-light">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-3">
-					<a href="${pageContext.request.contextPath}/ticket?action=list"
-						class="btn btn-primary btn-block"> <i class="fas fa-eye"></i>
-						Display tickets
+			<div class="buttons">
+					<a href="${pageContext.request.contextPath}/addProduct.jsp"
+						class="btn"> <i class="fas fa-plus"></i>
+						Add products
 					</a>
 				</div>
-				<div class="col-md-3">
+				<div class="buttons">
+					<a href="${pageContext.request.contextPath}/product?action=list"
+						class="btn"> <i class="fas fa-eye"></i>
+						Display products
+					</a>
+				</div>
+				<div class="buttons">
 					<a href="${pageContext.request.contextPath}/client?action=list"
-						class="btn btn-primary btn-block"> <i class="fas fa-eye"></i>
+						class="btn"> <i class="fas fa-eye"></i>
 						Display clients
 					</a>
 				</div>
-				<div class="col-md-3">
-					<button onclick="getClients()" class="btn btn-primary btn-block">
+				<div class="buttons">
+					<button onclick="getClients()" class="btn">
 						<i class="fas fa-eye"></i> Display clients AJAX
 					</button>
 				</div>
-				<div class="col-md-3">
-					<a href="${pageContext.request.contextPath}/car?action=list"
-						class="btn btn-primary btn-block"> <i class="fas fa-eye"></i>
-						Display cars
+				<div class="buttons">
+					<a href="${pageContext.request.contextPath}/addClient.jsp"
+						class="btn"> <i class="fas fa-plus"></i>
+						Add client
 					</a>
 				</div>
 			</div>

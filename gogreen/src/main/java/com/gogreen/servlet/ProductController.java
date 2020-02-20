@@ -140,17 +140,13 @@ private static final long serialVersionUID = -7558166539389234332L;
 	}
 
 	private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// recuperamos los valores del formulario editarProducto
 		int code = Integer.parseInt(request.getParameter("code"));
 
-		// Creamos el objeto de producto (modelo)
 		Product product = new Product(code);
 
-		// Eliminamos el objeto en la base de datos
 		int registrosModificados = new ProductDao().delete(product);
 		System.out.println("Registres modificats:" + registrosModificados);
 
-		// Redirigimos hacia accion por default
 		this.showListProduct(request, response);
 	}
 	
