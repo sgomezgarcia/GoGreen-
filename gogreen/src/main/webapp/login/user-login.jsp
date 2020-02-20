@@ -10,7 +10,7 @@
         <script src="https://kit.fontawesome.com/f90d3bf50d.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<form name="frmLogin" method="post" action="/startup/action-login">
+	<form name="frmLogin" method="post" action="/client?action=login">
 		<p>
 			<label>Nom usuari (nick):</label>
 			<input name="userName" type="text" value="" required="required" />

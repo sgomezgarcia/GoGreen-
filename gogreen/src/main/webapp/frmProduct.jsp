@@ -37,14 +37,23 @@
 		    <div class="container">
 		        <div class="row">
 		            <div class="col-md-3">
-		                <a href="#" class="btn btn-success btn-block"
-		                   data-toggle="modal" data-target="#agregarClienteModal">
+		                <a href="#" class="buttons">
 		                    <i class="fas fa-plus-circle"></i> Agregar Producto
 		                </a>
 		            </div>
 		            <div class="col-md-3">
-		                <a href="${pageContext.request.contextPath}/product?action=list" class="btn btn-success btn-block">
+		                <a href="${pageContext.request.contextPath}/product?action=list" class="buttons">
 		                    <i class="fas fa-eye"></i> Ver Productos
+		                </a>
+		            </div>
+		            <div class="col-md-3">
+		                <a href="${pageContext.request.contextPath}/addClient.jsp" class="buttons">
+		                    <i class="fas fa-plus"></i> Add client
+		                </a>
+		            </div>
+		            <div class="col-md-3">
+		                <a href="${pageContext.request.contextPath}/client?action=list" class="buttons">
+		                    <i class="fas fa-eye"></i> Display clients
 		                </a>
 		            </div>
 		        </div>

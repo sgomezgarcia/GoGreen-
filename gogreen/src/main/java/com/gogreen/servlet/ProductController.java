@@ -21,7 +21,7 @@ private static final long serialVersionUID = -7558166539389234332L;
 		if (action != null) {
 			switch (action) {
 			case "edit":
-				this.deleteProduct(request, response);
+				this.editProduct(request, response);
 				break;
 			default:
 				this.showListProduct(request, response);
@@ -75,8 +75,8 @@ private static final long serialVersionUID = -7558166539389234332L;
 
 	private void editProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// recuperamos el idProduct
-		int codeProduct = Integer.parseInt(request.getParameter("codeProduct"));
-		Product product = new ProductDao().findById(new Product(codeProduct));
+		int code = Integer.parseInt(request.getParameter("code"));
+		Product product = new ProductDao().findById(new Product(code));
 		request.setAttribute("product", product);
 		String jspEditar = "/editProduct.jsp";
 		request.getRequestDispatcher(jspEditar).forward(request, response);
@@ -112,10 +112,11 @@ private static final long serialVersionUID = -7558166539389234332L;
 	private void updateProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//request.setCharacterEncoding("UTF-8");
 		System.out.println("Modificar producto");
+		System.out.println(request.getParameter("code"));
 		
 		// Recuperam els valors del formulari editProduct
-		int codeProduct = Integer.parseInt(request.getParameter("codeProduct"));
-		String name = request.getParameter("nombre");
+		int code = Integer.parseInt(request.getParameter("code"));
+		String name = request.getParameter("name");
 		System.out.println("Nombre:" + name);
 		
 		String price = request.getParameter("price");
@@ -128,7 +129,7 @@ private static final long serialVersionUID = -7558166539389234332L;
 		}
 
 		// Creamos el objeto de producto (modelo)
-		Product product = new Product(codeProduct);
+		Product product = new Product(code, name, precio, description, saldo);
 
 		// Modificar el objeto en la base de datos
 		int registrosModificados = new ProductDao().update(product);
@@ -140,10 +141,10 @@ private static final long serialVersionUID = -7558166539389234332L;
 
 	private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// recuperamos los valores del formulario editarProducto
-		int codeProduct = Integer.parseInt(request.getParameter("codeProduct"));
+		int code = Integer.parseInt(request.getParameter("code"));
 
 		// Creamos el objeto de producto (modelo)
-		Product product = new Product(codeProduct);
+		Product product = new Product(code);
 
 		// Eliminamos el objeto en la base de datos
 		int registrosModificados = new ProductDao().delete(product);

@@ -22,7 +22,8 @@
 <body>
 	<form class="form-signin" method="POST"
 		action="${pageContext.request.contextPath}/product?action=login">
-		<img class="logo" src="https://image.winudf.com/v2/image/Y29tLnNocmVlLmhlYWx0aHlmb29kX2ljb25fMTUzODM5ODk4OF8wOTg/icon.png?w=170&fakeurl=1">
+		<img class="logo"
+			src="https://image.winudf.com/v2/image/Y29tLnNocmVlLmhlYWx0aHlmb29kX2ljb25fMTUzODM5ODk4OF8wOTg/icon.png?w=170&fakeurl=1">
 		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 		<label for="inputEmail" class="sr-only">Username</label> <input
 			name="name" id="inputEmail" class="form-control"
@@ -36,8 +37,11 @@
 			</label>
 		</div>
 		<button class="btn btn-lg btn-primary btn-block" type="submit"
-			name="btnUser" style=" width: 100%; background-color: green; border-color: none;">Sign in</button>
-		<a href="http://localhost:8080/gogreen/frontOffice.jsp" class="guest" type="submit">Sign as guest</a>
+			name="btnUser"
+			style="width: 100%; background-color: green; border-color: none;">Sign
+			in</button>
+		<a href="http://localhost:8080/gogreen/frontOffice.jsp" class="guest"
+			type="submit">Sign as guest</a>
 		<p class="mt-5 mb-3 text-muted">© 2020-2021</p>
 	</form>
 </body>

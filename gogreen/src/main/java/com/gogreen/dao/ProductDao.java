@@ -60,10 +60,12 @@ public class ProductDao {
 			rs = stmt.executeQuery();
 			rs.absolute(1);// nos posicionamos en el primer registro devuelto
 
+			int code = rs.getInt("pro_code");
 			String name = rs.getString("pro_name");
 			Float price = rs.getFloat("pro_price");
 			String description = rs.getString("pro_description");
 
+			product.setCode(code);
 			product.setName(name);
 			product.setPrice(price);
 			product.setDescription(description);
@@ -85,16 +87,17 @@ public class ProductDao {
 	 * 
 	 */
 	public int create(Product product) {
-		String SQL_INSERT = "INSERT INTO products( pro_name, pro_price, pro_description) VALUES(?, ?, ?)";
+		String SQL_INSERT = "INSERT INTO products( pro_code, pro_name, pro_price, pro_description) VALUES(?, ?, ?)";
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		int rows = 0;
 		try {
 			conn = DBConnection.getConnection();
 			stmt = conn.prepareStatement(SQL_INSERT);
-			stmt.setString(1, product.getName());
-			stmt.setFloat(2, product.getPrice());
-			stmt.setString(3, product.getDescription());
+			stmt.setInt(1, product.getCode());
+			stmt.setString(2, product.getName());
+			stmt.setFloat(3, product.getPrice());
+			stmt.setString(4, product.getDescription());
 System.out.println(product.toString());
 			rows = stmt.executeUpdate();
 		} catch (SQLException ex) {

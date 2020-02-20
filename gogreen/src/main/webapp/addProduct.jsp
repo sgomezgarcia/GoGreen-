@@ -7,7 +7,7 @@
                 <button class="close" data-dismiss="modal"> <span>&times;</span> </button>
             </div>
             
-            <form action="${pageContext.request.contextPath}/product" method="POST" class="was-validated">
+            <form action="${pageContext.request.contextPath}/product?action=insert" method="POST" class="was-validated">
                 <input type="hidden" name="action" value="insert">
                 <div class="modal-body">
                     <div class="form-group">

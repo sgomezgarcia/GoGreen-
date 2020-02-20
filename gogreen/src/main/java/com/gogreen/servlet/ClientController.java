@@ -181,7 +181,7 @@ private static final long serialVersionUID = -7558166539389234332L;
 		System.out.println("Modifigogreen client");
 		
 		// Recuperam els valors del formulari editClient
-		int idCliente = Integer.parseInt(request.getParameter("idClient"));
+		int idCliente = Integer.parseInt(request.getParameter("idCliente"));
 		String nombre = request.getParameter("nombre");
 		System.out.println("Nombre:" + nombre);
 		String apellido = request.getParameter("apellido");

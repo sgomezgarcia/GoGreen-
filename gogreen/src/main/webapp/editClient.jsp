@@ -9,15 +9,15 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/f90d3bf50d.js" crossorigin="anonymous"></script>
 
-        <title>Editar Producto</title>
+        <title>Edit Client</title>
     </head>
     <body>
         <!--Cabecero-->
         <%@ include file="/common/header.jsp" %> 
 
-        <form name="frmProduct.jsp" action="${pageContext.request.contextPath}/product?action=update" method="POST" class="was-validated">
+        <form name="frm-client" action="${pageContext.request.contextPath}/client" method="POST" class="was-validated">
            <input id="input-action" type="hidden" name="action" value="update" />
-           <input type="hidden" name="code" value="${product.code}" />
+           <input type="hidden" name="idClient" value="${cliente.id}" />
            
             <!--Botones de Navegacion -->
         	<section id="actions" class="py-4 mb-4 bg-light">
@@ -25,17 +25,17 @@
 			        <div class="row">
 			            <div class="col-md-3">
 			                <a href="frmClient.jsp" class="btn btn-ligth btn-block">
-			                    <i class="fas fa-arrow-left"></i> Regresar a la lista
+			                    <i class="fas fa-arrow-left"></i> Go back to the list
 			                </a>
 			            </div>
 			            <div class="col-md-3">
 			                <button type="submit" class="btn btn-success btn-block">
-			                    <i class="fas fa-check"></i> Guardar Producto	
+			                    <i class="fas fa-check"></i> Save Client
 			                </button>
 			            </div>
 			            <div class="col-md-3">
 			                <button id="btn-delete" type="button" class="btn btn-danger btn-block">
-			                    <i class="fas fa-trash"></i> Eliminar Producto
+			                    <i class="fas fa-trash"></i> Delete Client
 			                </button>
 			            </div>
 			        </div>
@@ -48,20 +48,20 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Editar Producto</h4>
+                                    <h4>Edit Client</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="nombre">Nombre</label>
-                                        <input type="text" class="form-control" name="name" required value="${product.name}">
+                                        <label for="nombre">Name</label>
+                                        <input type="text" class="form-control" name="nombre" required value="${cliente.name}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="descripcion">Descripcion</label>
-                                        <input type="text" class="form-control" name="description" required value="${product.description}">
+                                        <label for="apellido">Surname</label>
+                                        <input type="text" class="form-control" name="apellido" required value="${cliente.surname}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="precio">Precio</label>
-                                        <input type="text" class="form-control" name="price" required value="${product.price}">
+                                        <label for="saldo">Balance</label>
+                                        <input type="number" class="form-control" name="saldo" required value="${cliente.balance}" step="any">
                                     </div>
                                 </div>
                             </div>
